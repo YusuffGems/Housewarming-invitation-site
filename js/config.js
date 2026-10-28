@@ -4,7 +4,7 @@ window.EVENT = {
   host: "Jayaraj Sivaraj",
   phone: "+918754542121",
   // IST (+05:30)
-  start: "2026-11-13T04:00:00+05:30",
+  start: "2026-11-13T04:30:00+05:30",
   end: "2026-11-13T06:00:00+05:30",
   address: "Plot No. 30, Door No. 210, Sri Raghavendra Nagar, Morai, Anna Nagar, Avadi, Chennai - 55",
   lat: 13.17206,
