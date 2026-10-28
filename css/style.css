@@ -76,3 +76,10 @@ h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(46px,13vw,6
 }
 
 @media (min-width:520px){ .card{padding:48px 36px} }
+/* ---------- Credit ---------- */
+.credit{
+  text-align:center;margin:22px 0 0;font-size:15px;line-height:1.7;
+  letter-spacing:.04em;color:var(--muted);
+}
+.credit a{color:var(--accent);text-decoration:none;font-weight:600}
+.credit a:hover{text-decoration:underline}
