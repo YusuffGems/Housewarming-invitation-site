@@ -47,7 +47,7 @@
       </div>
       <div>
         <div class="lbl">Time</div>
-        <div class="val">6:00 AM – 7:30 AM</div>
+        <div class="val">4:30 AM – 6:00 AM</div>
       </div>
       <div>
         <div class="lbl">Address</div>
@@ -65,34 +65,81 @@
     <div class="map">
       <iframe id="map-frame" title="Map to the venue" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
-    <!-- Animated Bus Route -->
+   <!-- Animated Zigzag Bus Route -->
 <section class="bus-route">
   <p class="bus-kicker">YOUR JOURNEY TO OUR NEW HOME</p>
   <h2 class="bus-title">🚌 Bus Route</h2>
-  <p class="bus-subtitle">Come celebrate with us!</p>
 
-  <div class="bus-animation">
-    <div class="route-road"></div>
+  <div class="bus-route-map">
+    <svg class="route-svg" viewBox="0 0 700 220"
+         role="img" aria-label="Animated bus route from Morai through Anna Nagar to Avadi">
 
-    <div class="route-stop start-stop">
-      <span class="stop-dot"></span>
-      <span class="stop-label">Start</span>
-    </div>
+      <!-- Zigzag road -->
+      <path class="road-outline"
+        d="M 35 65 C 90 65, 95 135, 165 135
+           S 235 55, 300 75
+           S 365 165, 435 140
+           S 510 55, 565 85
+           S 625 155, 670 125" />
 
-    <div class="moving-bus">🚌</div>
+      <path class="road-line"
+        d="M 35 65 C 90 65, 95 135, 165 135
+           S 235 55, 300 75
+           S 365 165, 435 140
+           S 510 55, 565 85
+           S 625 155, 670 125" />
 
-    <div class="route-stop end-stop">
-      <span class="stop-dot"></span>
-      <span class="stop-label">Our Home</span>
-    </div>
+      <!-- Route stops -->
+      <g class="route-stop" transform="translate(35 65)">
+        <circle r="9" />
+        <text x="0" y="-23"></text>
+      </g>
+
+      <g class="route-stop" transform="translate(300 75)">
+        <circle r="9" />
+        <text x="0" y="-23">Anna Nagar</text>
+      </g>
+
+      <g class="route-stop" transform="translate(565 85)">
+        <circle r="9" />
+        <text x="0" y="-23">Avadi</text>
+      </g>
+
+      <g class="route-stop home-stop" transform="translate(670 125)">
+        <circle r="10" />
+        <text x="-8" y="31" text-anchor="end">Our Home</text>
+      </g>
+
+      <!-- Animated bus travelling along the zigzag road -->
+      <g>
+        <g transform="translate(-23 -14)">
+          <rect x="0" y="0" width="48" height="23" rx="5"
+                fill="#e4a72e" stroke="#6b3517" stroke-width="1.5"/>
+          <rect x="5" y="4" width="9" height="8" rx="1.5" fill="#eaf5f5"/>
+          <rect x="17" y="4" width="9" height="8" rx="1.5" fill="#eaf5f5"/>
+          <rect x="29" y="4" width="9" height="8" rx="1.5" fill="#eaf5f5"/>
+          <rect x="40" y="5" width="5" height="11" rx="1" fill="#fff1c6"/>
+          <rect x="4" y="15" width="39" height="3" rx="1" fill="#9b2c1d"/>
+          <circle cx="11" cy="23" r="4" fill="#302b2a" stroke="#f8e6bf" stroke-width="1.5"/>
+          <circle cx="37" cy="23" r="4" fill="#302b2a" stroke="#f8e6bf" stroke-width="1.5"/>
+
+          <animateMotion dur="12s" repeatCount="indefinite"
+            rotate="auto"
+            path="M 35 65 C 90 65, 95 135, 165 135
+                  S 235 55, 300 75
+                  S 365 165, 435 140
+                  S 510 55, 565 85
+                  S 625 155, 670 125" />
+        </g>
+      </g>
+    </svg>
   </div>
 
-  <div class="bus-destination">
-    <span class="destination-icon">📍</span>
-    <div>
-      <strong>Sri Raghavendra Nagar</strong>
-      <p>Morai, Avadi, Chennai – 600055</p>
-    </div>
+  <div class="bus-route-info">
+    <span class="bus-icon">🚌</span>
+    <span class="bus-routes-label">Available Bus Routes</span>
+    <p class="bus-numbers">61E <span>•</span> 61K <span>•</span> 120K</p>
+    <p class="bus-stops-text">Avadi <span>→</span> Anna Nagar <span>→</span>Morai</p>
   </div>
 
   <p class="bus-note">Follow the route and join our housewarming celebration!</p>

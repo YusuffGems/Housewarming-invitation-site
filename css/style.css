@@ -159,36 +159,172 @@ h1 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: clamp(46p
 .credit a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .credit a:hover { text-decoration: underline; }
 
-/* ---------- Animated Zigzag Bus Route ---------- */
-.bus-route { margin-top: 20px; padding: 22px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-align: center; overflow: hidden; }
-.bus-kicker { margin: 0 0 4px; font-size: 11px; letter-spacing: .18em; color: var(--muted); }
-.bus-title { margin: 0; color: var(--gold); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; line-height: 1.25; }
-.bus-subtitle { margin: 3px 0 0; font-size: 16px; color: var(--muted); }
-.bus-animation { position: relative; height: 155px; margin: 12px auto; max-width: 360px; overflow: hidden; }
-.bus-animation .route-road { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; border: 0; overflow: visible; }
-.bus-animation .route-road::before { content: ''; position: absolute; inset: 0; }
-.moving-bus {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  font-size: 29px;
-  line-height: 1;
-  offset-path: path('M 20 20 L 85 20 L 125 65 L 205 65 L 245 115 L 320 115');
-  offset-distance: 0%;
-  offset-rotate: auto;
-  animation: zigzag-bus-travel 6s linear infinite alternate;
+/* Animated Bus Route */
+.bus-route {
+  width: 100%;
+  max-width: 760px;
+  margin: 35px auto;
+  padding: 28px 16px;
+  overflow: hidden;
+  text-align: center;
+  color: #4a1d12;
+  background: linear-gradient(145deg, #fffaf0, #fff1d6);
+  border: 1px solid #e6cf9c;
+  border-radius: 22px;
+  box-shadow: 0 10px 28px rgba(74, 29, 18, 0.08);
 }
-@keyframes zigzag-bus-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-.start-stop { position: absolute; z-index: 3; left: 5%; top: 4px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
-.end-stop { position: absolute; z-index: 3; right: 2%; top: 100px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
-.stop-dot { width: 15px; height: 15px; border: 3px solid var(--card); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--gold); }
-.stop-label { font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; }
-.bus-destination { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 5px; padding: 12px 8px; border-top: 1px solid var(--line); text-align: left; }
-.destination-icon { font-size: 25px; }
-.bus-destination strong { display: block; color: var(--accent); font-size: 18px; }
-.bus-destination p { margin: 2px 0 0; font-size: 14px; line-height: 1.4; color: var(--muted); }
-.bus-note { margin: 5px 0 0; font-size: 14px; font-style: italic; color: var(--muted); }
+
+.bus-kicker {
+  margin: 0 0 8px;
+  color: #9c6b22;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.bus-title {
+  margin: 0 0 15px;
+  color: #9c2a1a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 5vw, 38px);
+}
+
+.bus-route-map {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.route-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.road-outline {
+  fill: none;
+  stroke: #b9a58c;
+  stroke-width: 25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.road-line {
+  fill: none;
+  stroke: #484747;
+  stroke-width: 20;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.route-svg .road-line {
+  stroke-dasharray: 8 7;
+  stroke: #fff0cc;
+  stroke-width: 2;
+}
+
+.route-stop circle {
+  fill: #9c2a1a;
+  stroke: #fffaf0;
+  stroke-width: 4;
+}
+
+.route-stop text {
+  fill: #68291a;
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #fff7e8;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.home-stop circle {
+  fill: #b8862b;
+}
+
+.bus-route-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin: 15px auto 0;
+  padding: 18px 12px;
+  max-width: 430px;
+  border: 1px solid #dfbd72;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bus-icon {
+  font-size: 29px;
+}
+
+.bus-routes-label {
+  color: #8a5a25;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.bus-numbers {
+  margin: 4px 0;
+  color: #9c2a1a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(25px, 5vw, 34px);
+  font-weight: 700;
+}
+
+.bus-numbers span {
+  padding: 0 5px;
+  color: #b8862b;
+}
+
+.bus-stops-text {
+  margin: 0;
+  color: #68402b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bus-stops-text span {
+  padding: 0 5px;
+  color: #b8862b;
+}
+
+.bus-note {
+  margin: 16px 0 0;
+  color: #8a5a44;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .bus-route {
+    padding: 22px 8px;
+    border-radius: 16px;
+  }
+
+  .bus-kicker {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+  }
+
+  .route-stop text {
+    font-size: 17px;
+  }
+
+  .bus-stops-text {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-svg animateMotion {
+    display: none;
+  }
+}
 
 /* ---------- Responsive ---------- */
 @media (min-width: 520px) { .card { padding: 48px 36px; } }
